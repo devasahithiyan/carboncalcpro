@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="A comprehensive Carbon Footprint Calculator" />
+  <meta name="keywords" content="carbon footprint, environment, calculator, climate" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Carbon Footprint Calculator</title>
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <header>
+    <nav>
+      <div class="logo">CarbonCalc Pro</div>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO / INTRO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Advanced Carbon Footprint Calculator</h1>
+      <p>
+        Determine how your lifestyle impacts the environment and discover practical ways to reduce your carbon footprint.
+      </p>
+      <a href="#calculator" class="cta-btn">Start Now</a>
+    </div>
+  </section>
+
+  <!-- CALCULATOR SECTION -->
+  <main id="calculator">
+    <h2>Calculate Your Carbon Footprint</h2>
+    <p>
+      Complete each step below. After calculation, view your results along with personalized recommendations and eye‐opening comparisons.
+    </p>
+
+    <!-- MULTI-STEP FORM -->
+    <form id="carbonForm">
+      <!-- STEP INDICATORS -->
+      <div class="step-indicators">
+        <div class="step-indicator active" data-step="1">1</div>
+        <div class="step-indicator" data-step="2">2</div>
+        <div class="step-indicator" data-step="3">3</div>
+        <div class="step-indicator" data-step="4">4</div>
+        <div class="step-indicator" data-step="5">5</div>
+      </div>
+
+      <!-- STEP 1: Household Energy -->
+      <div class="form-step active" data-step="1">
+        <h3>Step 1: Household Energy</h3>
+        <div class="form-group">
+          <label for="monthlyElectricity">Monthly Electricity Usage (kWh):</label>
+          <input type="number" id="monthlyElectricity" name="monthlyElectricity" min="0" step="1" placeholder="e.g., 400" required />
+        </div>
+        <div class="form-group">
+          <label for="monthlyGas">Monthly Natural Gas Usage (therms):</label>
+          <input type="number" id="monthlyGas" name="monthlyGas" min="0" step="1" placeholder="e.g., 50" />
+        </div>
+        <div class="form-group">
+          <label for="peopleInHouse">Number of People in Household:</label>
+          <input type="number" id="peopleInHouse" name="peopleInHouse" min="1" step="1" placeholder="e.g., 3" required />
+        </div>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+
+      <!-- STEP 2: Transportation -->
+      <div class="form-step" data-step="2">
+        <h3>Step 2: Transportation</h3>
+        <div class="form-group">
+          <label for="carType">Type of Car:</label>
+          <select id="carType" name="carType" required>
+            <option value="" disabled selected>Select your car type</option>
+            <option value="gas">Gasoline</option>
+            <option value="diesel">Diesel</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="electric">Electric</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="carMiles">Car Travel (miles per week):</label>
+          <input type="number" id="carMiles" name="carMiles" min="0" step="1" placeholder="e.g., 150" />
+        </div>
+        <div class="form-group">
+          <label for="busMiles">Bus Travel (miles per week):</label>
+          <input type="number" id="busMiles" name="busMiles" min="0" step="1" placeholder="e.g., 20" />
+        </div>
+        <div class="form-group">
+          <label for="trainMiles">Train/Metro Travel (miles per week):</label>
+          <input type="number" id="trainMiles" name="trainMiles" min="0" step="1" placeholder="e.g., 10" />
+        </div>
+        <div class="form-group">
+          <label for="flightHoursShort">Short-Haul Flights (hours per year):</label>
+          <input type="number" id="flightHoursShort" name="flightHoursShort" min="0" step="1" placeholder="e.g., 5" />
+        </div>
+        <div class="form-group">
+          <label for="flightHoursLong">Long-Haul Flights (hours per year):</label>
+          <input type="number" id="flightHoursLong" name="flightHoursLong" min="0" step="1" placeholder="e.g., 10" />
+        </div>
+        <div class="button-group">
+          <button type="button" class="prev-btn">Previous</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Food & Diet -->
+      <div class="form-step" data-step="3">
+        <h3>Step 3: Food & Diet</h3>
+        <div class="form-group">
+          <label for="meatFrequency">Meat Consumption Frequency:</label>
+          <select id="meatFrequency" name="meatFrequency" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="high">High (Daily)</option>
+            <option value="medium">Medium (Few times per week)</option>
+            <option value="low">Low (Rarely)</option>
+            <option value="none">None (Vegetarian/Vegan)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="dairyFrequency">Dairy Consumption Frequency:</label>
+          <select id="dairyFrequency" name="dairyFrequency" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="high">High (Daily)</option>
+            <option value="medium">Medium (Few times per week)</option>
+            <option value="low">Low (Rarely)</option>
+            <option value="none">None (Dairy-free)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="foodWaste">Estimated Food Waste (kg per week):</label>
+          <input type="number" id="foodWaste" name="foodWaste" min="0" step="0.1" placeholder="e.g., 2" />
+        </div>
+        <div class="button-group">
+          <button type="button" class="prev-btn">Previous</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Consumables & Waste -->
+      <div class="form-step" data-step="4">
+        <h3>Step 4: Consumables & Waste</h3>
+        <div class="form-group">
+          <label for="recycleHabit">Recycling Habits:</label>
+          <select id="recycleHabit" name="recycleHabit" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="always">Always Recycle</option>
+            <option value="often">Often</option>
+            <option value="sometimes">Sometimes</option>
+            <option value="rarely">Rarely/Never</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="paperUsage">Paper Usage (reams per year):</label>
+          <input type="number" id="paperUsage" name="paperUsage" min="0" step="1" placeholder="e.g., 5" />
+        </div>
+        <div class="form-group">
+          <label for="clothingPurchases">New Clothing Purchases (items per year):</label>
+          <input type="number" id="clothingPurchases" name="clothingPurchases" min="0" step="1" placeholder="e.g., 20" />
+        </div>
+        <div class="button-group">
+          <button type="button" class="prev-btn">Previous</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: Review & Submit -->
+      <div class="form-step" data-step="5">
+        <h3>Step 5: Review & Submit</h3>
+        <p>
+          You have reached the final step! Click <strong>Calculate</strong> to view your estimated annual carbon footprint.
+        </p>
+        <div class="button-group">
+          <button type="button" class="prev-btn">Previous</button>
+          <button type="submit" id="calculateBtn">Calculate</button>
+          <button type="reset" id="resetBtn">Reset</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- RESULTS SECTION -->
+    <section id="results" class="hidden">
+      <h2>Your Carbon Footprint Results</h2>
+      <p class="disclaimer">
+        * The estimates below are based on average emission factors and might vary based on your region and energy sources.
+      </p>
+      <div class="results-summary">
+        <p id="footprintValue">
+          Your annual carbon footprint is approximately <strong>0.00</strong> metric tons of CO<sub>2</sub>.
+        </p>
+        <!-- Fun fact appears below the result -->
+        <p id="funFact"></p>
+      </div>
+      <!-- Chart Container -->
+      <div class="chart-container">
+        <canvas id="emissionChart"></canvas>
+      </div>
+      <!-- Additional Eye-Opening Comparisons -->
+      <div id="comparisons" class="comparisons hidden"></div>
+      <!-- RECOMMENDATIONS (hidden by default) -->
+      <div id="recommendations" class="hidden">
+        <h3>Recommendations for Reducing Your Carbon Footprint</h3>
+        <ul>
+          <li><strong>Transportation:</strong> Consider carpooling, using public transit, or switching to an electric/hybrid vehicle.</li>
+          <li><strong>Energy Usage:</strong> Switch to energy-efficient appliances and consider renewable energy options.</li>
+          <li><strong>Diet:</strong> Reduce meat/dairy consumption and minimize food waste by planning meals ahead.</li>
+          <li><strong>Waste & Recycling:</strong> Recycle more, use reusable items, and opt for secondhand or repaired goods.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2>About This Calculator</h2>
+    <p>
+      This advanced carbon footprint calculator uses multiple factors including energy usage, transportation habits, diet, and consumable purchases. The estimates are based on data from sources such as the U.S. EPA and IPCC. While these calculations are approximations, they help provide insight into how lifestyle choices impact greenhouse gas emissions.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 CarbonCalc Pro. All rights reserved.</p>
+  </footer>
+
+  <!-- Link to external JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
